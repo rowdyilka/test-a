@@ -1,4 +1,6 @@
-what to learn
+goals 
 
-- put a website onto google
-- understand how to code
+- make basic html (done)
+- figure out git (done)
+- host site on github (done)
+

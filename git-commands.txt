@@ -1,0 +1,237 @@
+Great question! Here's a breakdown of all the essential Git commands:
+
+## **Basic Concepts First**
+- **Repository (repo)**: A folder tracked by Git containing your project
+- **Commit**: A snapshot of your project at a specific point in time
+- **Branch**: A separate line of development (like a parallel version of your project)
+- **Remote**: A version of your repository hosted online (like on GitHub)
+
+---
+
+## **Setup & Configuration**
+
+**`git config`** - Set up your Git settings
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+**`git init`** - Create a new Git repository in your current folder
+```bash
+git init
+```
+This creates a hidden `.git` folder that tracks everything.
+
+---
+
+## **Getting Information**
+
+**`git status`** - Show what's changed in your project
+```bash
+git status
+```
+Shows: files that are modified, staged for commit, or untracked (new files Git doesn't know about yet).
+
+**`git log`** - Show history of commits
+```bash
+git log
+```
+Shows who made changes, when, and their commit messages.
+
+**`git diff`** - Show exact changes in your files
+```bash
+git diff
+```
+Shows line-by-line what you've changed but haven't staged yet.
+
+**`git branch`** - List all branches or show current branch
+```bash
+git branch          # List all branches
+git branch -a       # List all branches including remote ones
+```
+
+---
+
+## **Making Changes**
+
+**`git add`** - Stage files for commit (prepare them to be saved)
+```bash
+git add index.html       # Stage one file
+git add .                # Stage all changed files
+git add *.css            # Stage all CSS files
+```
+Think of this as putting items in a shopping cart before checkout.
+
+**`git commit`** - Save your staged changes with a message
+```bash
+git commit -m "Add homepage"
+```
+This creates a permanent snapshot. The `-m` flag adds a message describing what you changed.
+
+**`git commit -am`** - Stage and commit in one step (only for already tracked files)
+```bash
+git commit -am "Update styling"
+```
+
+---
+
+## **Branching**
+
+**`git branch <name>`** - Create a new branch
+```bash
+git branch feature-navbar
+```
+Branches let you work on new features without affecting your main code.
+
+**`git checkout`** - Switch to a different branch
+```bash
+git checkout feature-navbar
+```
+
+**`git checkout -b <name>`** - Create and switch to a new branch
+```bash
+git checkout -b new-feature
+```
+
+**`git branch -M <name>`** - Rename current branch
+```bash
+git branch -M main
+```
+Commonly used to rename "master" to "main".
+
+**`git branch -d <name>`** - Delete a branch
+```bash
+git branch -d old-feature
+```
+
+**`git merge`** - Combine another branch into your current branch
+```bash
+git checkout main
+git merge feature-navbar
+```
+This brings changes from `feature-navbar` into `main`.
+
+---
+
+## **Working with Remote Repositories (GitHub)**
+
+**`git remote`** - Manage connections to remote repositories
+```bash
+git remote -v                                    # List all remotes
+git remote add origin https://github.com/...    # Connect to GitHub
+git remote remove origin                         # Remove connection
+```
+
+**`git clone`** - Download a repository from GitHub to your computer
+```bash
+git clone https://github.com/username/repo.git
+```
+This copies the entire project to your machine.
+
+**`git push`** - Upload your commits to GitHub
+```bash
+git push origin main              # Push to main branch
+git push -u origin main           # Push and set as default
+git push                          # Push to default remote/branch
+```
+The `-u` flag sets the upstream, so next time you can just type `git push`.
+
+**`git pull`** - Download changes from GitHub and merge them
+```bash
+git pull origin main
+```
+This does two things: `git fetch` (download) + `git merge` (combine).
+
+**`git fetch`** - Download changes from GitHub without merging
+```bash
+git fetch origin
+```
+Good for seeing what's changed before merging.
+
+---
+
+## **Undoing Changes**
+
+**`git restore`** - Discard changes in a file (newer Git versions)
+```bash
+git restore index.html           # Undo changes to file
+git restore --staged index.html  # Unstage a file
+```
+
+**`git reset`** - Unstage files or undo commits
+```bash
+git reset index.html             # Unstage a file
+git reset HEAD~1                 # Undo last commit (keep changes)
+git reset --hard HEAD~1          # Undo last commit (DELETE changes)
+```
+⚠️ Be careful with `--hard` - it permanently deletes your work!
+
+**`git revert`** - Undo a commit by creating a new commit
+```bash
+git revert abc123
+```
+Safer than reset because it doesn't delete history.
+
+---
+
+## **Advanced/Useful Commands**
+
+**`git stash`** - Temporarily save changes without committing
+```bash
+git stash                 # Save current changes
+git stash pop             # Restore saved changes
+git stash list            # See all stashes
+```
+Useful when you need to switch branches but aren't ready to commit.
+
+**`git tag`** - Mark specific commits (like version numbers)
+```bash
+git tag v1.0
+git push origin v1.0
+```
+
+**`git rm`** - Remove files from Git tracking
+```bash
+git rm oldfile.html
+```
+
+**`git mv`** - Rename or move files
+```bash
+git mv old.html new.html
+```
+
+---
+
+## **Typical Workflow**
+
+Here's how these commands work together in practice:
+
+```bash
+# 1. Start a new project
+git init
+
+# 2. Make changes to files
+# (edit index.html in your editor)
+
+# 3. Check what changed
+git status
+
+# 4. Stage your changes
+git add index.html
+
+# 5. Commit with a message
+git commit -m "Add homepage content"
+
+# 6. Connect to GitHub (first time only)
+git remote add origin https://github.com/username/repo.git
+
+# 7. Push to GitHub
+git push -u origin main
+
+# Later, when making more changes:
+git add .
+git commit -m "Update styling"
+git push
+```
+
+Does this help clarify things? Any specific commands you want me to explain in more detail?
