@@ -1,4 +1,3 @@
-Great question! Here's a breakdown of all the essential Git commands:
 
 ## **Basic Concepts First**
 - **Repository (repo)**: A folder tracked by Git containing your project
