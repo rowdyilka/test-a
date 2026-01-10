@@ -1,6 +1,0 @@
-goals 
-
-- make basic html (done)
-- figure out git (done)
-- host site on github (done)
-
