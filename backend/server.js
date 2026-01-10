@@ -8,10 +8,13 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['https://rowdyilka.github.io', 'http://localhost:3000'],
+  credentials: true
+}));
 app.use(express.json());
 
 // In-memory database (replace with real database in production)
